@@ -1,0 +1,4 @@
+<section class="phx-hero">
+  <h1><%= gettext "Welcome to %{name}!", name: "Bad Pinoy Movies" %></h1>
+  <p>A celebration of corny, schlocky, and all-around terrible Filipino cinema</p>
+</section>
