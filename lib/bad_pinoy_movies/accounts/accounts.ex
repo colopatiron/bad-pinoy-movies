@@ -3,23 +3,22 @@ defmodule BadPinoyMovies.Accounts do
   The Accounts context
   """
 
+  alias BadPinoyMovies.Repo
   alias BadPinoyMovies.Accounts.User
 
   def list_users do
-    [
-      %User{id: "1", name: "Jem", username: "jemp"},
-      %User{id: "2", name: "Mickey", username: "mickeym"},
-      %User{id: "3", name: "Kiro", username: "kirok"}
-    ]
+    Repo.all(User)
   end
 
   def get_user(id) do
-    Enum.find(list_users(), fn map -> map.id == id end)
+    Repo.get(User, id)
+  end
+
+  def get_user!(id) do
+    Repo.get!(User, id)
   end
 
   def get_user_by(params) do
-    Enum.find(list_users(), fn map ->
-      Enum.all?(params, fn {key, val} -> Map.get(map, key) == val end)
-    end)
+    Repo.get_by(User, params)
   end
 end
