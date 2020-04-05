@@ -1,8 +1,4 @@
 defmodule BadPinoyMovies.Accounts do
-  @moduledoc """
-  The Accounts context
-  """
-
   alias BadPinoyMovies.Repo
   alias BadPinoyMovies.Accounts.User
 
@@ -20,5 +16,15 @@ defmodule BadPinoyMovies.Accounts do
 
   def get_user_by(params) do
     Repo.get_by(User, params)
+  end
+
+  def change_user(%User{} = user) do
+    User.changeset(user, %{})
+  end
+
+  def create_user(attrs \\ %{}) do
+    %User{}
+    |> User.changeset(attrs)
+    |> Repo.insert()
   end
 end
