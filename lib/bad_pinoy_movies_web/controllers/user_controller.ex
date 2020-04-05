@@ -3,6 +3,7 @@ defmodule BadPinoyMoviesWeb.UserController do
 
   alias BadPinoyMovies.Accounts
   alias BadPinoyMovies.Accounts.User
+  alias BadPinoyMoviesWeb.Auth
 
   plug :authenticate when action in [:index, :show]
 
@@ -25,6 +26,8 @@ defmodule BadPinoyMoviesWeb.UserController do
     case Accounts.register_user(user_params) do
       {:ok, user} ->
         conn
+
+        |> Auth.login(user)
         |> put_flash(:info, "#{user.name} created")
         |> redirect(to: Routes.user_path(conn, :index))
 
