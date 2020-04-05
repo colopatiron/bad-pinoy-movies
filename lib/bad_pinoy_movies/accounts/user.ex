@@ -4,8 +4,10 @@ defmodule BadPinoyMovies.Accounts.User do
   import Ecto.Changeset
 
   schema "users" do
-    field(:name, :string)
-    field(:username, :string)
+    field :name, :string
+    field :username, :string
+    field :password, :string, virtual: true
+    field :password_hash, :string
 
     timestamps()
   end
