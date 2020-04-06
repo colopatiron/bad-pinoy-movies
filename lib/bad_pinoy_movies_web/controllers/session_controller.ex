@@ -1,4 +1,4 @@
-defmodule BadPinoyMovies.SessionController do
+defmodule BadPinoyMoviesWeb.SessionController do
   use BadPinoyMoviesWeb, :controller
 
   alias BadPinoyMovies.Accounts
@@ -10,9 +10,9 @@ defmodule BadPinoyMovies.SessionController do
 
   def create(
         conn,
-        %{"session" => %{"username" => username}, "password" => password}
+        %{"session" => %{"username" => username, "password" => password}}
       ) do
-    case authenticate_by_username_and_pass(username, password) do
+    case Accounts.authenticate_by_username_and_pass(username, password) do
       {:ok, user} ->
         conn
         |> Auth.login(user)
