@@ -34,4 +34,6 @@ npm-debug.log
 /priv/static/
 
 # ignore eixirls files
-.elixir_ls/
+/.elixir_ls/
+
+.iex.exs
